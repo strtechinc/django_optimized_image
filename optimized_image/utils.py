@@ -1,3 +1,4 @@
+import traceback
 from io import BytesIO
 from PIL import Image
 import os
@@ -143,6 +144,7 @@ def optimize_legacy_images_in_model_fields(list_of_models, verbosity=0):
                         # If the optimization failed for any reason, write this
                         # to stdout.
                         sys.stdout.write('\nOptimization failed for {}.'.format(image_file.name))
+                        sys.stdout.write(traceback.format_exc())
 
                     if verbosity == 1:
                         sys.stdout.write('\nOptimized and saved image.')
