@@ -125,7 +125,7 @@ def optimize_legacy_images_in_model_fields(list_of_models, verbosity=0):
                             image.save(output_file, format=extension, optimize=True)
                             # Save the image in place of the unoptimized one
                             content_file = ContentFile(output_file.getvalue())
-                            image_name = os.path.relpath(image_file.name, image_file.field.upload_to)
+                            image_name = os.path.relpath(image_file.name)
                             image_file.save(image_name, content_file)
                         elif settings.OPTIMIZED_IMAGE_METHOD == 'tinypng':
                             tinify.key = settings.TINYPNG_KEY
