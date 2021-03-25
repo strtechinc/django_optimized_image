@@ -133,7 +133,7 @@ def optimize_legacy_images_in_model_fields(list_of_models, verbosity=0):
                             optimized_buffer = tinify.from_buffer(image_file.read()).to_buffer()
                             # Save the image in place of the unoptimized one
                             content_file = ContentFile(optimized_buffer)
-                            image_name = os.path.relpath(image_file.name, image_file.field.upload_to)
+                            image_name = os.path.relpath(image_file.name)
                             image_file.save(image_name, content_file)
                     except:
                         if is_testing_mode():
