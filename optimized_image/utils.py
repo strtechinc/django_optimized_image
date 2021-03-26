@@ -94,7 +94,10 @@ def optimize_legacy_images_in_model_fields(list_of_models, verbosity=0):
 
                 # If the instance's field has an image, optimize it
                 image_file = getattr(model_instance, field_name)
-                image_file_extension = image_file.name.split('.')[-1]
+                try:
+                    image_file_extension = image_file.name.split('.')[-1]
+                except:
+                    continue
 
                 # If the file extension is in the list of file extensions
                 # that should be ignored for optimization, exit this iteration
